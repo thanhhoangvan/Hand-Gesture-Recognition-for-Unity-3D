@@ -1,12 +1,17 @@
-import os
 import cv2
-import time
 
-cap = cv2.VideoCapture(1)
+
+cam = cv2.VideoCapture(0)
+
 
 while True:
-    img, res = cap.read()
-    cv2.imshow('Hand Gesture', img)
+    result, image = cam.read()
+    
+    cv2.imshow("hand Detection", image)
 
-    cv2.waitKey(1)
-    cv2.destroyAllWindows()
+    k = cv2.waitKey(1)
+    # ESC pressed -> quit
+    if k%256 == 27:
+        break
+
+cv2.destroyWindow("GeeksForGeeks")
